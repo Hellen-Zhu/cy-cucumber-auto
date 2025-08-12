@@ -31,6 +31,7 @@ jobs:
         env:
           CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
           CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
+          USE_CURRENTS: "0"
         run: |
           npx cypress install
           npx cypress run --browser chrome --headless --spec "cypress/e2e/**/*.feature"

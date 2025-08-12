@@ -2,9 +2,9 @@ const { defineConfig } = require("cypress");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-preprocessor");
 const { createEsbuildPlugin } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
-const { cloudPlugin } = require("cypress-cloud/plugin");
 const dotenv = require('dotenv');
 dotenv.config();
+const USE_CURRENTS = process.env.USE_CURRENTS === '1';
 
 module.exports = defineConfig({
   e2e: {
@@ -24,8 +24,12 @@ module.exports = defineConfig({
           plugins: [createEsbuildPlugin(config)],
         })
       );
-      const result = await cloudPlugin(on, config);
-      return result;
+      if (USE_CURRENTS) {
+        const { cloudPlugin } = require('cypress-cloud/plugin');
+        const result = await cloudPlugin(on, config);
+        return result;
+      }
+      return config;
     },
   },
 });
