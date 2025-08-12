@@ -3,10 +3,7 @@ const dayjs = require('dayjs')
 async function main() {
     const results = await run({
         ciBuildId: dayjs().format('YYYY-MM-DD HH:mm:ss'),
-        config: {
-          baseUrl: "http://novel.hctestedu.com",
-          video: true,
-        },
+        spec: 'cypress/e2e/**/*.feature',
       });
       
       if (results.status === 'failed') {

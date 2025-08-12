@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run --headless"
+    "cypress:run": "cypress run --headless",
+    "regression": "node ./utils/regression.js"
+    
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^22.2.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.5",
+    "cypress": "^13.7.3",
     "dotenv": "^17.2.1",
     "esbuild": "^0.25.8",
     "papaparse": "^5.5.3"
@@ -24,7 +27,6 @@
     ]
   },
   "dependencies": {
-    "cypress": "13.7.3",
     "cypress-cloud": "2.0.0-beta.1"
   }
 }
