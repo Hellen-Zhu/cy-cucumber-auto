@@ -25,6 +25,6 @@
   },
   "dependencies": {
     "cypress": "^14.5.4",
-    "cypress-cloud": "^2.0.0-beta.1"
+    "cypress-cloud": "2.0.0-beta.1"
   }
 }
