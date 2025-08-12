@@ -4,7 +4,7 @@ const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-pr
 const { createEsbuildPlugin } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 const dotenv = require('dotenv');
 dotenv.config();
-const USE_CURRENTS = process.env.USE_CURRENTS === '1';
+// Keep config independent of cypress-cloud plugin. Use CLI/Node API to run in cloud.
 
 module.exports = defineConfig({
   e2e: {
@@ -24,11 +24,6 @@ module.exports = defineConfig({
           plugins: [createEsbuildPlugin(config)],
         })
       );
-      if (USE_CURRENTS) {
-        const { cloudPlugin } = require('cypress-cloud/plugin');
-        const result = await cloudPlugin(on, config);
-        return result;
-      }
       return config;
     },
   },
